@@ -1,7 +1,7 @@
 certifi==2021.5.30
 charset-normalizer==2.0.4
 idna==3.2
-psycopg2 @ file:///opt/concourse/worker/volumes/live/f55cefe6-405c-4e89-6ffc-e3fc11a5d3e8/volume/psycopg2_1612298588356/work
+psycopg2-binary
 pyTelegramBotAPI==4.0.0
 requests==2.26.0
 urllib3==1.26.6
