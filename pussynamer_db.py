@@ -103,7 +103,7 @@ def select():
     cur = conn.cursor()
 
     # GET ALL PUSSIES
-    sql_select_name = """SELECT DISTINCT name FROM pussy ORDER BY name;"""
+    sql_select_name = """SELECT DISTINCT name FROM pussy WHERE is_active=TRUE ORDER BY name;"""
     cur.execute(sql_select_name)
     select_data = cur.fetchall()
     conn.commit()
