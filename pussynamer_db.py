@@ -64,8 +64,8 @@ def insert(id_user_field, created_on_field, name):
         cur = conn.cursor()
 
         # cur.execute("INSERT INTO note(id_user, created_on, note, lat, lon) VALUES({}, {}, {}, {}, {}) RETURNING id;".format(id_user_field, created_on_field, note_field, lat_field, lon_field))
-        sql_insert_name = """INSERT INTO pussy (id_user, created_on, name) VALUES (%s, %s, %s) RETURNING id;"""
-        data = (id_user_field, datetime.strptime(created_on_field,'%Y-%m-%dT%H:%M:%S'), name,)
+        sql_insert_name = """INSERT INTO pussy (id_user, created_on, name, is_active) VALUES (%s, %s, %s, %s) RETURNING id;"""
+        data = (id_user_field, datetime.strptime(created_on_field,'%Y-%m-%dT%H:%M:%S'), name,'TRUE')
         cur.execute(sql_insert_name, data)
         
         # get the generated id back
