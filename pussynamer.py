@@ -42,8 +42,6 @@ def new_pussy(message):
     pussy_record["id_user"] = id_user
     print(pussy_record)
     keyboard = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True, one_time_keyboard=True)
-    # button_geo = types.KeyboardButton(text="Отправить местоположение 📍", request_location=True)
-    # keyboard.add(button_geo)
     bot.send_message(message.chat.id, "Напиши имя своей pussy", reply_markup=keyboard)
     note_status = "WAITING"
     print(note_status)
@@ -52,6 +50,9 @@ def new_pussy(message):
 def show_pussy(message):
     bot.send_message(message.chat.id, "Вот такие pussy уже есть в списке:")
     bot.send_message(message.chat.id, select())
+    keyboard_finish.add(button_new)
+    keyboard_finish.add(button_show)
+
 
 
 @bot.message_handler(content_types=['text'])
@@ -77,13 +78,15 @@ def add_note(message):
 
         # INSERT TO DB USER NOTES
         insert(user_field, created_on_field, pussyname_field)
-        bot.send_message(message.chat.id, "Congratulations!\nВаша pussy добавлена в список имен!", reply_markup=keyboard_finish)
+        bot.send_message(message.chat.id, "Congratulations!\nТвоя pussy добавлена в список имен!", reply_markup=keyboard_finish)
         # bot.register_next_step_handler(message, save_note)
         # pussy_record[]
         print(pussy_record)
         # bot.register_next_step_handler(message, save_note)
     else:
-        bot.send_message(message.chat.id, "ОШИБКА: БОТ НЕ ЖДЕТ ТЕКСТ")
+        bot.send_message(message.chat.id, "Error: бот не понял сообщение. Лучше вернись в главное меню")
+        keyboard_finish.add(button_new)
+        keyboard_finish.add(button_show)
 
 # @bot.message_handler(commands=["save"])
 # def save_note(message):
