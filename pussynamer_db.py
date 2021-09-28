@@ -45,6 +45,7 @@ def insert(id_user_field, created_on_field, name):
 
     conn = None
     pussy_id = None 
+    active_status = ('TRUE', 'FALSE')
 
     try:
         # read connection parameters
@@ -65,7 +66,7 @@ def insert(id_user_field, created_on_field, name):
 
         # cur.execute("INSERT INTO note(id_user, created_on, note, lat, lon) VALUES({}, {}, {}, {}, {}) RETURNING id;".format(id_user_field, created_on_field, note_field, lat_field, lon_field))
         sql_insert_name = """INSERT INTO pussy (id_user, created_on, name, is_active) VALUES (%s, %s, %s, %s) RETURNING id;"""
-        data = (id_user_field, datetime.strptime(created_on_field,'%Y-%m-%dT%H:%M:%S'), name,'TRUE')
+        data = (id_user_field, datetime.strptime(created_on_field,'%Y-%m-%dT%H:%M:%S'), name, active_status[0])
         cur.execute(sql_insert_name, data)
         
         # get the generated id back

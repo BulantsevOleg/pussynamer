@@ -3,8 +3,21 @@ import telebot
 from telebot import types
 import random
 from datetime import datetime, timezone
-# import psycopg2
+import requests
+from urllib.request import urlopen
+
+from textwrap import wrap
+
+from PIL import Image
+from PIL import ImageFont
+from PIL import ImageDraw 
+
 from pussynamer_db import *
+from pussynamer_text import *
+
+
+# text = "Абубакар Хамим Аль-Багдади Рашид Эфенди"
+# text = "Абубакар"
 
 
 # ~~~~~~~~~~ BOT OPERATIONS ~~~~~~~~~~
@@ -18,7 +31,6 @@ pussy_name = ""
 pussy_record = {}
 button_new = types.KeyboardButton(text="/new_pussy")
 button_show = types.KeyboardButton(text="/show_pussy")
-
 
 # keyboard1 = telebot.types.ReplyKeyboardMarkup(True, True)
 # keyboard1.row('/create', '/get', '/end', '/update')
@@ -48,6 +60,7 @@ def new_pussy(message):
 
 @bot.message_handler(commands=["show_pussy"])
 def show_pussy(message):
+    keyboard_finish = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True, one_time_keyboard=True)
     bot.send_message(message.chat.id, "Вот такие pussy уже есть в списке:")
     bot.send_message(message.chat.id, select())
     keyboard_finish.add(button_new)
@@ -58,17 +71,13 @@ def show_pussy(message):
 @bot.message_handler(content_types=['text'])
 def add_note(message):
     global pussy_record
-    # pussy_record = {}
-    # print("!!!!!!CHECKING",lat, lon)
     global pussy_name
+    keyboard_finish = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True, one_time_keyboard=True)
     # print(note_status)
     if note_status == 'WAITING':
-        keyboard_finish = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True, one_time_keyboard=True)
-        # new_name = types.KeyboardButton(text="/start")
         keyboard_finish.add(button_new)
-        # select_button = types.KeyboardButton(text="/показать весь список pussy")
         keyboard_finish.add(button_show)
-        pussy_name = message.text
+        pussy_name = message.text.title()
         pussy_record["pussy_name"] = pussy_name
         # отправить в БД
         created_on_field = datetime.fromtimestamp(message.date).strftime('%Y-%m-%dT%H:%M:%S')
@@ -78,7 +87,10 @@ def add_note(message):
 
         # INSERT TO DB USER NOTES
         insert(user_field, created_on_field, pussyname_field)
-        bot.send_message(message.chat.id, "Congratulations!\nТвоя pussy добавлена в список имен!", reply_markup=keyboard_finish)
+        bot.send_message(message.chat.id, "Congratulations!\nТвоя pussy добавлена в список имен!\n\nПолюбуйся на меня👁👅👁", reply_markup=keyboard_finish)
+        # Place name of the pussy on the image
+        pussy_image = caption_img(pussy_name)
+        bot.send_photo(message.chat.id, photo=pussy_image)
         # bot.register_next_step_handler(message, save_note)
         # pussy_record[]
         print(pussy_record)
