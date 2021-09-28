@@ -72,6 +72,7 @@ def show_pussy(message):
 def add_note(message):
     global pussy_record
     global pussy_name
+    global note_status
     keyboard_finish = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True, one_time_keyboard=True)
     # print(note_status)
     if note_status == 'WAITING':
@@ -96,6 +97,11 @@ def add_note(message):
         # pussy_record[]
         print(pussy_record)
         # bot.register_next_step_handler(message, save_note)
+        note_status = "FINISH"
+    elif note_status == "FINISH":
+        bot.send_message(message.chat.id, "Ты только что добавил новую киску. Теперь можешь посмотреть список имен или добавить новое.")
+        keyboard_finish.add(button_new)
+        keyboard_finish.add(button_show)
     else:
         bot.send_message(message.chat.id, "Error: бот не понял сообщение. Лучше вернись в главное меню")
         keyboard_finish.add(button_new)
