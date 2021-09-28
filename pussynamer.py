@@ -87,7 +87,8 @@ def add_note(message):
 
         # INSERT TO DB USER NOTES
         insert(user_field, created_on_field, pussyname_field)
-        bot.send_message(message.chat.id, "Congratulations!\nТвоя pussy добавлена в список имен!\n\nПолюбуйся на меня👁👅👁", reply_markup=keyboard_finish)
+        kitty = "👁    👁\n=   ⚮   =\n     👅"
+        bot.send_message(message.chat.id, "Твоя pussy добавлена в список имен!💫\n\nПолюбуйся на меня\n{}".format(kitty), reply_markup=keyboard_finish)
         # Place name of the pussy on the image
         pussy_image = caption_img(pussy_name)
         bot.send_photo(message.chat.id, photo=pussy_image)
