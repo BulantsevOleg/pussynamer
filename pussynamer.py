@@ -63,7 +63,7 @@ def new_pussy(message):
 def show_pussy(message):
     global note_status
     keyboard_finish = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True, one_time_keyboard=True)
-    bot.send_message(message.chat.id, "Вот такие pussy уже есть в списке:")
+    bot.send_message(message.chat.id, "Вот такие pussy уже есть в списке:", reply_markup=keyboard_finish)
     bot.send_message(message.chat.id, select())
     keyboard_finish.add(button_new)
     keyboard_finish.add(button_show)
@@ -117,7 +117,7 @@ def save_pussy(message):
     # INSERT TO DB USER NOTES
     insert(user_field, created_on_field, pussyname_field)
     kitty = "👁    👁\n>   ⚮   <\n     👅"
-    bot.send_message(message.chat.id, "Твоя pussy добавлена в список имен!\n\n{}\n\nПолюбуйся на меня💫".format(kitty), reply_markup=keyboard_finish)
+    bot.send_message(message.chat.id, "Твоя pussy добавлена в список имен!\n\n{}\n".format(kitty), reply_markup=keyboard_finish)
     # Place name of the pussy on the image
     pussy_image = caption_img(pussy_name)
     bot.send_photo(message.chat.id, photo=pussy_image)
