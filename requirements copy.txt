@@ -1,0 +1,10 @@
+certifi==2021.5.30
+charset-normalizer==2.0.4
+idna==3.2
+olefile==0.46
+Pillow
+psycopg2=binary
+pyTelegramBotAPI==4.0.0
+requests==2.26.0
+textwrap3==0.9.2
+urllib3==1.26.6

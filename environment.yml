@@ -1,0 +1,44 @@
+name: pussynamer
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - ca-certificates=2021.5.30=h033912b_0
+  - certifi=2021.5.30=py36h79c6626_0
+  - freetype=2.10.4=ha233b18_0
+  - jpeg=9d=h9ed2024_0
+  - krb5=1.19.2=hcd88c3b_0
+  - lcms2=2.12=hf1fd2bf_0
+  - libcxx=10.0.0=1
+  - libedit=3.1.20210714=h9ed2024_0
+  - libffi=3.3=hb1e8313_2
+  - libpng=1.6.37=ha441bb4_0
+  - libpq=12.2=h1b4eb34_1
+  - libtiff=4.2.0=h87d7836_0
+  - libwebp-base=1.2.0=h9ed2024_0
+  - lz4-c=1.9.3=h23ab428_1
+  - ncurses=6.2=h0a44026_1
+  - olefile=0.46=py36_0
+  - openjpeg=2.4.0=h66ea3da_0
+  - openssl=1.1.1l=h0d85af4_0
+  - pillow=8.3.1=py36ha4cf6ea_0
+  - pip=21.0.1=py36hecd8cb5_0
+  - psycopg2=2.8.6=py36hbcfaee0_1
+  - python=3.6.13=h88f2d9e_0
+  - python_abi=3.6=2_cp36m
+  - readline=8.1=h9ed2024_0
+  - setuptools=52.0.0=py36hecd8cb5_0
+  - sqlite=3.36.0=hce871da_0
+  - textwrap3=0.9.2=py_0
+  - tk=8.6.10=hb0a8c7a_0
+  - wheel=0.37.0=pyhd3eb1b0_0
+  - xz=5.2.5=h1de35cc_0
+  - zlib=1.2.11=h1de35cc_3
+  - zstd=1.4.9=h322a384_0
+  - pip:
+    - charset-normalizer==2.0.4
+    - idna==3.2
+    - pytelegrambotapi==4.0.0
+    - requests==2.26.0
+    - urllib3==1.26.6
+prefix: /Users/macbook/opt/miniconda3/envs/pussynamer

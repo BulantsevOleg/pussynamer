@@ -6,6 +6,8 @@ from datetime import datetime, timezone
 import requests
 from urllib.request import urlopen
 
+import os
+
 from textwrap import wrap
 
 from PIL import Image
@@ -22,7 +24,7 @@ from pussynamer_text import *
 
 # ~~~~~~~~~~ BOT OPERATIONS ~~~~~~~~~~
 
-TOKEN = '1969594443:AAEHHKGX1RaJIU9KLEcFnq5_DI5GFgJrlqQ'
+TOKEN = os.environ['BOT_TOKEN']
 bot = telebot.TeleBot(TOKEN)
 
 note_status = "START"
